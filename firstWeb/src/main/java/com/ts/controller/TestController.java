@@ -1,6 +1,7 @@
 package com.ts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,10 +25,19 @@ public class TestController {
     @Autowired
     RestTemplate restTemplate;
 
+    @Value("${server.port}")
+    private String port;
+
     @GetMapping("/hello")
     public String hello(){
         System.out.println("hello");
         return restTemplate.getForObject("http://SECOND-WEB/hello",String.class);
+    }
+
+    @GetMapping("/hello1")
+    public String hello1(){
+        System.out.println("hello");
+        return port;
     }
 }
 

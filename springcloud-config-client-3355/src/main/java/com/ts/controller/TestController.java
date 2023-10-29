@@ -6,21 +6,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @title TestController
- * @date 2023/10/29 20:21
+ * @date 2023/10/25 21:25
  * @author ts happy boy
  * @description TODO
  */
-
 @RestController
 public class TestController {
-//    @Value("${config.info}")
-    private String appName;
-
-    @GetMapping("hello")
+    @Value("${config.info}")
+    private String name;
+    @GetMapping ("/hello")
     public String hello(){
-        return "hello";
+        return "second"+name;
     }
-
 }
 
 
